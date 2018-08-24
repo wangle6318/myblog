@@ -1,0 +1,138 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    个人博客首页
+{% endblock %}
+{% block left_content %}
+<div class="photo-frame">
+    <div class="inner-frame">
+        <div class="carousel slide" id="content-carousel" data-ride = "carousel">
+            <ol class="carousel-indicators">
+                <li data-target = "#content-carousel" data-slide-to = "0" class="active"></li>
+                <li data-target = "#content-carousel" data-slide-to = "1"></li>
+                <li data-target = "#content-carousel" data-slide-to = "2"></li>
+                <li data-target = "#content-carousel" data-slide-to = "3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="#">
+                        <img class="img-responsive" src="{% static 'img/001.jpg' %}" alt="first slide"/>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <img class="img-responsive" src="{% static 'img/002.jpg' %}" alt="first slide"/>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <img class="img-responsive" src="{% static 'img/003.jpg' %}" alt="first slide"/>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <img class="img-responsive" src="{% static 'img/004.jpg' %}" alt="first slide"/>
+                    </a>
+                </div>
+            </div>
+            <a class="carousel-control left" href="#content-carousel" data-slide = "prev">
+                <span class = "glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="carousel-control right" href="#content-carousel" data-slide = "next">
+                <span class = "glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="new-column">
+    <div class="column-name">
+        <img src="{% static 'img/NEW.svg' %}"/>
+        <p>最新发布</p>
+    </div>
+    <ul class="article-list clearfix">
+        {% for na in newa %}
+            <li class="article clearfix">
+                <div class="article-main clearfix">
+                    <div class="article-img">
+                        <img class="img-responsive img-thumbnail" src="{% static 'img/textimg.jpg' %}"/>
+                    </div>
+                    <div class="article-content">
+                        <h4 class="title">
+                            <a href="{% url 'blog:article' na.id %}">{{ na.title }}</a>
+                        </h4>
+                        <div class="text">
+                            <div class="abstract">
+                                {{ na.abstract }}
+                            </div>
+                            <div class="read-all">
+                                <a href="{% url 'blog:article' na.id %}">阅读原文>></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-info clearfix">
+                    <ul>
+                        <li><span class="glyphicon glyphicon-user"><span class="article-auth">{{ na.author }}</span></span></li>
+                        <li><span class="glyphicon glyphicon-time"><span class="article-time">{{ na.created_time|date:"Y年m月d日" }}</span></span></li>
+                        <li><span class="glyphicon glyphicon-eye-open"><span class="article-read">{{ na.views }}浏览</span></span></li>
+                        <li><span class="glyphicon glyphicon-comment"><span class="article-comment">{{ na.comments }}评论</span></span></li>
+                        <li><span class="glyphicon glyphicon-tags">
+                            <span>
+                                {% for t in na.tags.all %}
+                                    {{ t }}
+                                {% endfor %}
+                            </span>
+                        </span></li>
+                    </ul>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+</div>
+<div class="hot-column">
+    <div class="column-name">
+        <img src="{% static 'img/hot.svg' %}"/>
+        <p>热门推荐</p>
+    </div>
+    <ul class="article-list">
+        {% for ha in hota %}
+            <li class="article clearfix">
+                <div class="article-main clearfix">
+                    <div class="article-img">
+                        <img class="img-responsive img-thumbnail" src="{% static 'img/textimg.jpg' %}"/>
+                    </div>
+                    <div class="article-content">
+                        <h4 class="title">
+                            <a href="{% url 'blog:article' ha.id %}">{{ ha.title }}</a>
+                        </h4>
+                        <div class="text">
+                            <div class="abstract">
+                                {{ ha.abstract }}
+                            </div>
+                            <div class="read-all">
+                                <a href="{% url 'blog:article' ha.id %}">阅读原文>></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-info clearfix">
+                    <ul>
+                        <li><span class="glyphicon glyphicon-user"><span class="article-auth">{{ ha.author }}</span></span></li>
+                        <li><span class="glyphicon glyphicon-time"><span class="article-time">{{ ha.created_time|date:"Y年m月d日" }}</span></span></li>
+                        <li><span class="glyphicon glyphicon-eye-open"><span class="article-read">{{ ha.views }}浏览</span></span></li>
+                        <li><span class="glyphicon glyphicon-comment"><span class="article-comment">{{ ha.comments }}评论</span></span></li>
+                        <li><span class="glyphicon glyphicon-tags">
+                            <span>
+                                {% for t in ha.tags.all %}
+                                    {{ t }}
+                                {% endfor %}
+                            </span>
+                        </span></li>
+                    </ul>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

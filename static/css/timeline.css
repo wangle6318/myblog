@@ -1,0 +1,118 @@
+.time-line{
+	margin-left: -15px;
+	/*	background-color: #31708F;*/
+	width: 720px;
+	height: auto;
+}
+
+.time-year{
+	width: 720px;
+	padding: 20px 0 20px 150px;
+	height: auto;
+}
+
+.event-list{
+	padding: 0 0 0px 20px;
+	border-left: 4px solid gainsboro;
+	height: auto;
+}
+
+.event-list > h3{
+	position: relative;
+	left: -25px;
+	font-family: "Georgia";
+	height: 30px;
+    line-height: 30px;
+    font-style: italic;
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+    padding: 0 200px 0 0;
+}
+
+.event-list > img{
+	position: relative;
+	float: left;
+	width: 18px;
+	height: 18px;
+	left: -31px !important;
+	top: 28px;
+}
+
+.event-list > li{
+	height: auto;
+	float: left;
+}
+
+.event-list > li > p{
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	font-family: verdana;
+}
+
+.event-list .event-date{
+	position: relative;
+	left: -75px;
+}
+
+.event-list > li > p > span{
+	float: left;
+}
+
+.event-list .time-point{
+	position: relative;
+	width: 10px;
+	height: 10px;
+	display: block;
+	background-color: black;
+	left: -70px;
+	border-radius: 5px;
+	top: 15px;
+}
+
+.event-list .event-info{
+	position: relative;
+	background-color: gainsboro;
+	padding: 0px 10px 0px 10px;
+	width: 400px;
+	display: block;
+	left: -74px;
+}
+
+.event-list .jian-tri{
+	font-size: 18px;
+	position: relative;
+	color: gainsboro;
+	left: -69px;
+	top: 12px;
+}
+
+.event-info > a,
+.event-info > a:hover,
+.event-info > a:active,
+.event-info > a:visited{
+	color: #000000;
+	text-decoration: none;
+	font-family: helvetica,"arial, helvetica, sans-serif","times new roman";
+}
+
+/*.event-list .event-info{
+	position: relative;
+	top: -70px;
+	background-color: gainsboro;
+	padding: 10px 10px 10px 10px;
+	width: 400px;
+	display: block;
+}*/
+
+/*.jian{
+	position: relative;
+	left: -20px;
+	top: -40px;
+	width: 20px;
+	height: 20px;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent gainsboro transparent transparent;
+}*/

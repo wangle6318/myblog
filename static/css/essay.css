@@ -1,0 +1,35 @@
+.leaves-message{
+	margin-left: -15px;
+/*	background-color: #31708F;*/
+	width: 720px;
+	height: auto;
+}
+
+.top-line{
+	margin-top: 5px;
+	width: 720px;
+	height: 5px;
+	background-color: #db6d4c;
+}
+
+.leave-message-info{
+	padding: 20px 20px;
+	background-color: rgb(255,245,247);
+	height: auto;
+	margin-bottom: 15px;
+}
+
+.leave-message-info > p{
+	color: rgb(69,137,148);
+}
+
+.leave-message-info > p > img{
+	width: 20px;
+}
+
+.leave-message-info > p > span{
+	position: relative;
+	left: 5px;
+	top: 3px;
+	font-family: helvetica,"arial, helvetica, sans-serif","仿宋";
+}

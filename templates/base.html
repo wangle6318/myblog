@@ -1,0 +1,163 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/myblog.css' %}"/>
+{#<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+{% block css_content %}
+{% endblock %}
+</head>
+<body>
+	<div class="yushi">
+		<div class="yushi-top visible-xs"></div>
+		<div class="yushi-content">
+			<div class="header">
+				<div class="header-logo hidden-xs">
+					<img src="{% static 'img/logo.jpg' %}"/>
+				</div>
+				<div class="header-text">
+					<h1>个人博客网站</h1>
+					<p>与诗同行，享受生活，品味人生</p>
+				</div>
+				<div class="header-nav visible-xs" data-toggle = "0">
+					<span class="glyphicon glyphicon-align-justify"></span>
+				</div>
+				<div class="header-navbar">
+					<ul class="">
+						<li class="header-current-nav"><a href="{% url 'blog:homepage' %}">网站首页</a></li>
+                        {% for ca in category %}
+                            <li><a href="{% url 'blog:articleList' ca.id %}">{{ ca }}</a></li>
+                        {% endfor %}
+						</ul>
+				</div>
+			</div>
+			<div class="yushi-nav-box hidden-xs">
+				<ul class="yushi-nav">
+					<li class="current-nav"><a href="{% url 'blog:homepage' %}">网站首页</a></li>
+                    {% for ca in category %}
+                        <li><a href="{% url 'blog:articleList' ca.id %}">{{ ca }}</a></li>
+                    {% endfor %}
+					<form class="serarch-box" role="search" action="" method="post">
+						<input class="" type="text" name="" placeholder="站内搜索"/>
+						<button type="submit" value="search" class="search-btn" id="">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</form>
+				</ul>
+			</div>
+			<div class="content">
+				<div class="container">
+					<div class="row center-block">
+						<div class="col-md-8">
+                            {% block left_content %}
+                            {% endblock %}
+                        </div>
+						<div class="col-md-4 visible-lg visible-md">
+                            <div class="right-info">
+								<div class="tags">
+									<div class="column-name">
+										<img src="{% static 'img/auth-column.svg' %}"/>
+										<p>热门标签</p>
+									</div>
+									<div class="hot-tags">
+										<div class="blackboard center-block">
+											<ul>
+                                                {% for tag in tags %}
+                                                    <li><a href="{% url 'blog:tagArtList' tag.id %}">{{ tag }}</a></li>
+                                                {% endfor %}
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="blog">
+									<div class="column-name">
+										<img src="{% static 'img/blog-statistics.svg' %}"/>
+										<p>博客统计</p>
+									</div>
+									<div class="blog-info">
+										<ul>
+								            <li>文章总数：{{ blog.art_num }} 篇</li>
+								            <li>评论总数：1 条</li>
+								            <li>留言总数：16 条</li>
+								            <li>分类总数：{{ blog.cat_num }} 个</li>
+								            <li>标签数量：{{ blog.tag_num }} 个</li>
+								            <li>运行天数：{{ blog.day_num }} 天</li>
+								            <li>最后更新：{{ blog.last_date|date:"Y-m-d" }}</li>
+								        </ul>
+									</div>
+								</div>
+								<div class="new-comment">
+									<div class="column-name">
+										<img src="{% static 'img/comment-text.svg' %}"/>
+										<p>最新评论</p>
+									</div>
+									<div class="new-comment-list">
+										<ul>
+											<li>
+												<a href="#">
+													<span>
+														<img src="{% static 'img/headimg.jpg' %}"/>
+													</span>
+													<p>不错的站点，以后一定常来不错的站点，以后一定常来</p>
+													<small>恶魔想做天使&nbsp;评论于&nbsp;2018-05-09</small>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span>
+														<img src="{% static 'img/headimg.jpg' %}"/>
+													</span>
+													<p>不错的站点，以后一定常来不错的站点，以后一定常来</p>
+													<small>恶魔想做天使&nbsp;评论于&nbsp;2018-05-09</small>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span>
+														<img src="{% static 'img/headimg.jpg' %}"/>
+													</span>
+													<p>不错的站点，以后一定常来不错的站点，以后一定常来</p>
+													<small>恶魔想做天使&nbsp;评论于&nbsp;2018-05-09</small>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span>
+														<img src="{% static 'img/headimg.jpg' %}"/>
+													</span>
+													<p>不错的站点，以后一定常来不错的站点，以后一定常来</p>
+													<small>恶魔想做天使&nbsp;评论于&nbsp;2018-05-09</small>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span>
+														<img src="{% static 'img/headimg.jpg' %}"/>
+													</span>
+													<p>不错的站点，以后一定常来不错的站点，以后一定常来</p>
+													<small>恶魔想做天使&nbsp;评论于&nbsp;2018-05-09</small>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+                        </div>
+					</div>
+                </div>
+            </div>
+{#			<div class="footer">#}
+{#				#}
+{#			</div>#}
+		</div>
+	</div>
+<script src="{% static 'js/jquery-3.1.0.min.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/myblog.js' %}" type="text/javascript" charset="utf-8"></script>
+{% block js_content %}
+{% endblock %}
+</body>
+</html>

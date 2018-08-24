@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.photo-album{
+	margin-left: -15px;
+/*	background-color: #31708F;*/
+	width: 720px;
+	height: auto;
+}
+
+.album-box{
+	margin-left: 10px;
+	position: relative;
+	background-color: white;
+	float: left;
+	border-radius: 5px;
+	border: 1px solid gainsboro;
+	box-shadow: 0 0 2px 1px gainsboro;
+}
+
+.album-box::after{
+	clear: both;
+}
+
+.album-content{
+	padding: 5px;
+	width: 228px;
+}
+
+.album-content > img{
+	width: 218px;
+	height: auto;
+}
+
+.album-content > p{
+	margin-top: 4px;
+	border-top: 2px solid gainsboro;
+	text-indent: 2em;
+	font-family: "楷体";
+	font-size: 16px;
+}
+

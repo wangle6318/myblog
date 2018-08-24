@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    心情随笔
+{% endblock %}
+{% block css_content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/essay.css' %}"/>
+{% endblock %}
+{% block left_content %}
+    <div class="leaves-message">
+        <div class="top-line"></div>
+        {% for ea in essay %}
+            <div class="leave-message-info">
+                <p>
+                    <img src="{% static 'img/日历.svg' %}"/>
+                    <span>{{ ea.created_time|date:"Y-m-d" }}</span>
+                </p>
+                <p>
+                    {{ ea.info }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

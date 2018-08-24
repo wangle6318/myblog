@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    文章阅读
+{% endblock %}
+{% block left_content %}
+<div class="show-article">
+    <div class="entry-header">
+        <h1 class="entry-title">{{ article.title }}</h1>
+        <div class="single-info">
+            <ul>
+                <li><span class="glyphicon glyphicon-user"><span class="article-auth">{{ article.author }}</span></span></li>
+                <li><span class="glyphicon glyphicon-time"><span class="article-time">{{ article.created_time|date:"Y-m-d" }}</span></span></li>
+                <li><span class="glyphicon glyphicon-eye-open"><span class="article-read">{{ article.views }}浏览</span></span></li>
+                <li><span class="glyphicon glyphicon-comment"><span class="article-comment">{{ article.comments }}评论</span></span></li>
+                <li><span class="glyphicon glyphicon-tags">
+                    <span>
+                        {% for t in article.tags.all %}
+                            {{ t }}
+                        {% endfor %}
+                    </span>
+                </span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="entry-content">
+        {% autoescape off %}
+            {{ article.body }}
+        {% endautoescape %}
+    </div>
+</div>
+<div class="comment center-block">
+    <form class="comment-form form-group" action="" method="post">
+        <div class="column-comment">
+            <p>发表评论</p>
+        </div>
+        <div class="comment-input">
+            <input type="text" name="" id="" value="" placeholder="姓名（必填）"/>
+            <input type="text" name="" id="" value="" placeholder="邮箱（必填）"/>
+            <textarea id="comment" class="form-control" name="" rows="" cols="" placeholder="说点什么……"></textarea>
+            <input type="submit" class="comment-btn" value="提交评论"/>
+        </div>
+    </form>
+    <div class="show-comments">
+        <div class="column-comment">
+            <p>评论留言</p>
+        </div>
+        <div class="comments-list">
+            <ul>
+                <li class="comment-content clearfix">
+                    <div class="c-info">
+                        <div class="c-picture">
+                            <img src="{% static 'img/textimg.jpg' %}"/>
+                        </div>
+                        <div class="c-auth-info clearfix">
+                            <p>
+                                <span class="c-auth">张三</span>
+                                <span class="c-time">2018年3月19日</span>
+                                <a href="javascript:void(0);" class="c-reply">回复</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="c-main">
+                        <p>
+                            <span id="at">
+                                钢铁侠
+                            </span>
+                            <span id="c-detail">
+                                我也求一个分享码，多少年没看到这么好的博客了，站长是个爱石器且认真的人，不忘初心，方得始终啊。支持，添加收藏了，以后会常来的，也祝博客越办越好
+                            </span>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="comment-content clearfix">
+                    <div class="c-info">
+                        <div class="c-picture">
+                            <img src="{% static 'img/textimg.jpg' %}"/>
+                        </div>
+                        <div class="c-auth-info clearfix">
+                            <p>
+                                <span class="c-auth">张三</span>
+                                <span class="c-time">2018年3月19日</span>
+                                <a href="javascript:void(0);" class="c-reply">回复</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="c-main">
+                        <p>
+                            <span id="at">
+                                钢铁侠
+                            </span>
+                            <span id="c-detail">
+                                我也求一个分享码，多少年没看到这么好的博客了，站长是个爱石器且认真的人，不忘初心，方得始终啊。支持，添加收藏了，以后会常来的，也祝博客越办越好
+                            </span>
+                        </p>
+                    </div>
+                    <div class="reply-content">
+                        <div class="c-info">
+                            <div class="c-picture">
+                                <img src="{% static 'img/textimg.jpg' %}"/>
+                            </div>
+                            <div class="c-auth-info clearfix">
+                                <p>
+                                    <span class="c-auth">张三</span>
+                                    <span class="c-time">2018年3月19日</span>
+                                    <a href="javascript:void(0);" class="deep-reply">回复</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="c-main">
+                            <p>
+                                <span id="at">
+                                    钢铁侠
+                                </span>
+                                <span id="c-detail">
+                                    我也求一个分享码，多少年没看到这么好的博客了，站长是个爱石器且认真的人，不忘初心，方得始终啊。支持，添加收藏了，以后会常来的，也祝博客越办越好
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="reply-content">
+                        <div class="c-info">
+                            <div class="c-picture">
+                                <img src="{% static 'img/textimg.jpg' %}"/>
+                            </div>
+                            <div class="c-auth-info clearfix">
+                                <p>
+                                    <span class="c-auth">张三</span>
+                                    <span class="c-time">2018年3月19日</span>
+                                    <a href="javascript:void(0);" class="deep-reply">回复</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="c-main">
+                            <p>
+                                <span id="at">
+                                    钢铁侠
+                                </span>
+                                <span id="c-detail">
+                                    我也求一个分享码，多少年没看到这么好的博客了，站长是个爱石器且认真的人，不忘初心，方得始终啊。支持，添加收藏了，以后会常来的，也祝博客越办越好
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

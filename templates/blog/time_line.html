@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    时间流转
+{% endblock %}
+{% block css_content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/timeline.css' %}"/>
+{% endblock %}
+{% block left_content %}
+    <div class="time-line">
+        <ul class="time-year clearfix">
+            {% for max_year in year %}
+                <div class="event-list clearfix">
+                    <img src="{% static 'img/circle-two.svg' %}"/>
+                    <h3>{{ max_year }}</h3><br/>
+                    {% for article in art %}
+                        {% ifequal max_year article.created_time|date:"Y" %}
+                            <li>
+                                <p>
+                                    <span class="event-date">{{ article.created_time|date:"m-d" }}</span>
+                                    <span class="time-point"></span>
+                                    <span class="jian-tri glyphicon glyphicon-triangle-left"></span>
+                                    <span class="event-info">
+                                        <a href="{% url 'blog:article' article.id %}">
+                                            {{ article.title }}
+                                        </a>
+                                    </span>
+                                </p>
+                            </li>
+                        {% endifequal %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}
+{% block js_content %}
+    <script src="{% static 'js/time_line.js' %}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
